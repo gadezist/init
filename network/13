@@ -1,0 +1,2 @@
+server type NS
+nslookup -type=NS 10.51.1.253

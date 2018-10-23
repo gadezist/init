@@ -1,0 +1,12 @@
+#!/bin/bash
+if [ -f '/home/user/monitor_hash' ]
+then
+	temp=$(md5sum -c monitor_hash | cut -d: -f 2)
+	if [[ $temp == " FAILED" ]]
+	then
+		echo "file modified" | mail -s "Monitor" root@gmail.com
+		md5sum /etc/crontab > monitor_hash
+	fi
+else
+	md5sum /etc/crontab > monitor_hash
+fi

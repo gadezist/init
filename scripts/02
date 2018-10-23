@@ -1,0 +1,10 @@
+#!/bin/bash
+sudo chmod 777 /etc/apt/sources.list.d/base.list
+echo 'deb http://ftp.ua.debian.org/debian/ squeeze main contrib non-free' > /etc/apt/sources.list.d/base.list
+echo 'deb-src http://ftp.ua.debian.org/debian/ squeeze main contrib non-free' >> /etc/apt/sources.list.d/base.list
+sudo touch /var/log/update_script.log
+sudo chmod 777 /var/log/update_script.log
+sudo apt-get update > /var/log/update_script.log
+crontab -e
+
+# 0 4 * * 1 sh /home/user/02.sh
